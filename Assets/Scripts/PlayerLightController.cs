@@ -1,0 +1,59 @@
+using System.Runtime.CompilerServices;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
+public class PlayerLightController : MonoBehaviour
+{
+    [Header("Movement Settings")]
+    public float moveSpeed = 5f;
+    public float smoothTime = 0.1f;
+
+    [Header("Light Settings")]
+    public float baseLightRadius = 1f;
+    public float maxLightRadius = 3f;
+    public float lightRadiusIncreaseSpeed = 0.5f;
+
+    private Rigidbody2D rb;
+    private Light2D playerLight;
+    private Vector2 currentVelocity;
+
+    void Start()
+    {
+        // attatch components and set initial light radius
+        rb = GetComponent<Rigidbody2D>();
+        playerLight = GetComponent<Light2D>();
+        playerLight.pointLightOuterRadius = baseLightRadius;
+    }
+
+    void Update()
+    {
+        // updatte movement and light radius based on input each frame
+        Movement();
+        LightInput();
+    }
+
+    void Movement()
+    {
+        // Get input axes
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        // Calculate target velocity and smoothly transition to it
+        Vector2 targetVelocity = new Vector2(horizontal, vertical) * moveSpeed;
+        rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, smoothTime);
+    }
+
+    void LightInput()
+    {
+        // light radius increases when space is held down and decreases when released
+        if (Input.GetKey(KeyCode.Space))
+        {
+            playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, maxLightRadius, Time.deltaTime * lightRadiusIncreaseSpeed);
+        }
+        else
+        {
+            playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, baseLightRadius, Time.deltaTime * lightRadiusIncreaseSpeed);
+        }
+    }
+
+}
