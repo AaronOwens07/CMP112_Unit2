@@ -13,15 +13,19 @@ public class PlayerLightController : MonoBehaviour
     public float maxLightRadius = 3f;
     public float lightRadiusIncreaseSpeed = 0.5f;
 
+    private CircleCollider2D colliderSize;
     private Rigidbody2D rb;
     private Light2D playerLight;
     private Vector2 currentVelocity;
+
+    public Vector2 moveDirection;
 
     void Start()
     {
         // attatch components and set initial light radius
         rb = GetComponent<Rigidbody2D>();
         playerLight = GetComponent<Light2D>();
+        colliderSize = GetComponent<CircleCollider2D>();
         playerLight.pointLightOuterRadius = baseLightRadius;
     }
 
@@ -30,6 +34,8 @@ public class PlayerLightController : MonoBehaviour
         // updatte movement and light radius based on input each frame
         Movement();
         LightInput();
+
+        colliderSize.radius = playerLight.pointLightOuterRadius - 0.5f;
     }
 
     void Movement()
@@ -38,9 +44,12 @@ public class PlayerLightController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
+        moveDirection = new Vector2(horizontal, vertical).normalized;
+
         // Calculate target velocity and smoothly transition to it
         Vector2 targetVelocity = new Vector2(horizontal, vertical) * moveSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, smoothTime);
+        
     }
 
     void LightInput()
