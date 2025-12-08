@@ -13,6 +13,9 @@ public class PlayerLightController : MonoBehaviour
     public float maxLightRadius = 3f;
     public float lightRadiusIncreaseSpeed = 0.5f;
 
+    // Boundaries for player movement
+    private float minX, maxX, minY, maxY;
+
     private CircleCollider2D colliderSize;
     private Rigidbody2D rb;
     private Light2D playerLight;
@@ -27,6 +30,18 @@ public class PlayerLightController : MonoBehaviour
         playerLight = GetComponent<Light2D>();
         colliderSize = GetComponent<CircleCollider2D>();
         playerLight.pointLightOuterRadius = baseLightRadius;
+
+        // Define movement boundaries based on camera view
+        var spirteSize = GetComponent<SpriteRenderer>().bounds.size;
+        Camera mainCamera = Camera.main;
+        Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 topRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
+
+        minY = bottomLeft.y + spirteSize.y / 2;
+        maxY = topRight.y - spirteSize.y / 2;
+
+        minX = bottomLeft.x + spirteSize.x / 2;
+        maxX = topRight.x - spirteSize.x / 2;
     }
 
     void Update()
@@ -36,6 +51,7 @@ public class PlayerLightController : MonoBehaviour
         LightInput();
 
         colliderSize.radius = playerLight.pointLightOuterRadius - 0.5f;
+
     }
 
     void Movement()
@@ -49,7 +65,11 @@ public class PlayerLightController : MonoBehaviour
         // Calculate target velocity and smoothly transition to it
         Vector2 targetVelocity = new Vector2(horizontal, vertical) * moveSpeed;
         rb.linearVelocity = Vector2.SmoothDamp(rb.linearVelocity, targetVelocity, ref currentVelocity, smoothTime);
-        
+
+        // Clamp player position within defined boundaries
+        var xValidPos = Mathf.Clamp(transform.position.x, minX, maxX);
+        var yValidPos = Mathf.Clamp(transform.position.y, minY, maxY);
+        transform.position = new Vector2(xValidPos, yValidPos);
     }
 
     void LightInput()
