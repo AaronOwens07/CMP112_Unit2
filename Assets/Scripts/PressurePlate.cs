@@ -5,8 +5,9 @@ public class PressurePlate : MonoBehaviour
 
     public string activatedByTag;
     private SpriteRenderer spriteRenderer;
-    public Color deactivatedColour = Color.red;
-    public Color activatedColour = Color.green;
+
+    public Sprite deactivatedSprite;
+    public Sprite activatedSprite;
 
     public GameObject activatedObject;
     public GameObject secondActivatedObject;
@@ -15,7 +16,7 @@ public class PressurePlate : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = deactivatedColour;
+        spriteRenderer.sprite = deactivatedSprite;
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class PressurePlate : MonoBehaviour
         {
             // Logic for when the pressure plate is activated
             Debug.Log("Pressure Plate Activated by " + activatedByTag);
-            spriteRenderer.color = activatedColour;
+            spriteRenderer.sprite = activatedSprite;
             if (activatedObject != null)
             {
                 activatedObject.SetActive(false);
@@ -49,7 +50,7 @@ public class PressurePlate : MonoBehaviour
         {
             // Logic for when the pressure plate is deactivated
             Debug.Log("Pressure Plate Deactivated by " + activatedByTag);
-            spriteRenderer.color = deactivatedColour;
+            spriteRenderer.sprite = deactivatedSprite;
             if (activatedObject != null)
             {
                 activatedObject.SetActive(true);
