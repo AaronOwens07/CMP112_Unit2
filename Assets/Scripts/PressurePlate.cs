@@ -9,6 +9,7 @@ public class PressurePlate : MonoBehaviour
     public Color activatedColour = Color.green;
 
     public GameObject activatedObject;
+    public GameObject secondActivatedObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,11 +34,27 @@ public class PressurePlate : MonoBehaviour
             if (activatedObject != null)
             {
                 activatedObject.SetActive(false);
+                secondActivatedObject.SetActive(true);
             }
         }
         else
         {
             Debug.Log("Pressure Plate not activated. Collided with " + collision.gameObject.tag);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(activatedByTag))
+        {
+            // Logic for when the pressure plate is deactivated
+            Debug.Log("Pressure Plate Deactivated by " + activatedByTag);
+            spriteRenderer.color = deactivatedColour;
+            if (activatedObject != null)
+            {
+                activatedObject.SetActive(true);
+                secondActivatedObject.SetActive(false);
+            }
         }
     }
 }
