@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class RevealableMaterial : MonoBehaviour
+public class RevealableTileMap : MonoBehaviour
 {
     public float revealSpeed = 1.0f;
     public Color revealColour;
     public Color hiddenColour;
 
-    private SpriteRenderer spriteRenderer;
+    private Tilemap tilemapRenderer;
     public bool isRevealed = false;
     public float revealProgress = 0.0f;
 
@@ -14,10 +15,8 @@ public class RevealableMaterial : MonoBehaviour
     void Start()
     {
         // initialize the sprite renderer and set initial material properties
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = hiddenColour;
-        spriteRenderer.material.SetFloat("_RevealAmount", 0.0f);
-
+        tilemapRenderer = GetComponent<Tilemap>();
+        tilemapRenderer.color = hiddenColour;
     }
 
     // Update is called once per frame
@@ -26,16 +25,19 @@ public class RevealableMaterial : MonoBehaviour
         if (isRevealed && revealProgress < 1.0f)
         {
             revealProgress += Time.deltaTime * revealSpeed;
-            spriteRenderer.color = Color.Lerp(hiddenColour, revealColour, revealProgress);
+            tilemapRenderer.color = Color.Lerp(hiddenColour, revealColour, revealProgress);
+
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             isRevealed = true;
         }
     }
 
 }
+
+

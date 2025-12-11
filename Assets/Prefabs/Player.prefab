@@ -197,7 +197,7 @@ MonoBehaviour:
   moveSpeed: 5
   smoothTime: 0.1
   baseLightRadius: 1
-  maxLightRadius: 2
+  maxLightRadius: 3
   lightRadiusIncreaseSpeed: 0.5
   moveDirection: {x: 0, y: 0}
 --- !u!50 &8669203824810136648
