@@ -13,12 +13,16 @@ public class PlayerLightController : MonoBehaviour
     public float maxLightRadius = 3f;
     public float lightRadiusIncreaseSpeed = 0.5f;
 
+    [Header("Colour settings")]
+    public Color currentLightColour = Color.white;
+    public Color defaultLightColour = Color.white;
+
     // Boundaries for player movement
     private float minX, maxX, minY, maxY;
 
     private CircleCollider2D colliderSize;
     private Rigidbody2D rb;
-    private Light2D playerLight;
+    public Light2D playerLight;
     private Vector2 currentVelocity;
 
     public Vector2 moveDirection;
@@ -30,6 +34,9 @@ public class PlayerLightController : MonoBehaviour
         playerLight = GetComponent<Light2D>();
         colliderSize = GetComponent<CircleCollider2D>();
         playerLight.pointLightOuterRadius = baseLightRadius;
+
+        currentLightColour = defaultLightColour;
+        playerLight.color = currentLightColour;
 
         // Define movement boundaries based on camera view
         var spirteSize = GetComponent<SpriteRenderer>().bounds.size;
