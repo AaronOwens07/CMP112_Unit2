@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Activator
+  - RedBox
+  - BlueBox
+  - YellowBox
+  - LightBlueBox
   layers:
   - Default
   - TransparentFX

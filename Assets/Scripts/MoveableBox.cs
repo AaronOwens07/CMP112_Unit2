@@ -59,8 +59,12 @@ public class MoveableBox : MonoBehaviour
 
     void spawnBox()
     {
+        //Random element equivilant to Mathf.Random to get a random position within set boundaries
+
         Vector2 spawnPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY , maxY));
         transform.position = spawnPosition;
+
+        Debug.Log("Box Spawned at: " + spawnPosition + "using Random.Range");
     }
 
     private void OnCollisionStay2D(Collision2D collision)

@@ -65,11 +65,11 @@ public class ColourBox : MonoBehaviour
 
 
             rb.AddForce(pushDirection * pushforce, ForceMode2D.Force);
-            Debug.Log("Pushing Box");
+            //Debug.Log("Pushing Box");
         }
         else if (!canMove)
         {
-            Debug.Log("Box cannot move: collision ignored");
+            //Debug.Log("Box cannot move: collision ignored");
             return;
         }
     }
@@ -78,27 +78,27 @@ public class ColourBox : MonoBehaviour
     {
         if (revealableMaterial == null || !revealableMaterial.isRevealed)
         {
-            Debug.Log("Box cannot move: not revealed");
+            //Debug.Log("Box cannot move: not revealed");
             canMove = false;
             return;
         }
 
         if (player != null)
         {
-            Debug.Log("Checking player light colour for box movement");
+            //Debug.Log("Checking player light colour for box movement");
             PlayerLightController newLight = player.GetComponent<PlayerLightController>();
 
             if (newLight != null)
             {
                 if (newLight.currentLightColour == requiredLightColour)
                 {
-                    Debug.Log("Box can move: correct light colour");
+                    //Debug.Log("Box can move: correct light colour");
                     canMove = true;
                     boxSprite.color = boxColour; // normal colour
                 }
                 else
                 {
-                    Debug.Log("Box cannot move: incorrect light colour");
+                    //Debug.Log("Box cannot move: incorrect light colour");
                     canMove = false;
                     boxSprite.color = Color.gray; // indicate cannot move
                 }

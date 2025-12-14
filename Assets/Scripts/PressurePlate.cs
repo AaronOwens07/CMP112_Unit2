@@ -12,6 +12,8 @@ public class PressurePlate : MonoBehaviour
     public GameObject activatedObject;
     public GameObject secondActivatedObject;
 
+    public bool isPressed = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,8 +37,9 @@ public class PressurePlate : MonoBehaviour
             if (activatedObject != null)
             {
                 activatedObject.SetActive(false);
-                secondActivatedObject.SetActive(true);
+                
             }
+            isPressed = true;
         }
         else
         {
@@ -54,8 +57,9 @@ public class PressurePlate : MonoBehaviour
             if (activatedObject != null)
             {
                 activatedObject.SetActive(true);
-                secondActivatedObject.SetActive(false);
+                
             }
+            isPressed = false;
         }
     }
 }
