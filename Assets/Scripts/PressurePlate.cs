@@ -12,6 +12,8 @@ public class PressurePlate : MonoBehaviour
     public GameObject activatedObject;
     public GameObject secondActivatedObject;
 
+    public AudioSource pressurePlateSound;
+
     public bool isPressed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,6 +29,15 @@ public class PressurePlate : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(activatedByTag))
+        {
+            pressurePlateSound.Play();
+        }
+    }
+    
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(activatedByTag))
@@ -38,8 +49,10 @@ public class PressurePlate : MonoBehaviour
             {
                 activatedObject.SetActive(false);
                 
+
             }
             isPressed = true;
+            
         }
         else
         {

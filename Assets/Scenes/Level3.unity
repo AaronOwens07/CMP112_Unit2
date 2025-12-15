@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513152616444867465, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 918047233851761984, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       propertyPath: m_Name
       value: Pressure Plate (LightBlue)
@@ -642,6 +646,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513152616444867465, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 918047233851761984, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       propertyPath: m_Name
       value: Pressure Plate(Red)
@@ -2227,6 +2235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513152616444867465, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 918047233851761984, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       propertyPath: m_Name
       value: Pressure Plate (Blue)
@@ -2303,6 +2315,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513152616444867465, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 918047233851761984, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       propertyPath: m_Name
       value: Pressure Plate (Yellow)
@@ -6312,6 +6328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1459334707334241913, guid: e994e3f003c4c0e449a1390ea65cc167, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5309865284340285058, guid: e994e3f003c4c0e449a1390ea65cc167, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.81219
