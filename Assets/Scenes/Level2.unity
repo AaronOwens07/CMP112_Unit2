@@ -842,6 +842,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 918047233851761984, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1752946019}
+    - targetCorrespondingSourceObject: {fileID: 918047233851761984, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1752946020}
   m_SourcePrefab: {fileID: 100100000, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
 --- !u!1 &745619224
 GameObject:
@@ -1870,7 +1873,7 @@ PrefabInstance:
     - target: {fileID: 935621514113552487, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       propertyPath: secondActivatedObject
       value: 
-      objectReference: {fileID: 1875609534}
+      objectReference: {fileID: 0}
     - target: {fileID: 2873251011798242052, guid: 422375efe8aa2d74dabeca5ba3ccfc29, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.98
@@ -5318,37 +5321,20 @@ MonoBehaviour:
   hiddenColour: {r: 0, g: 0, b: 0, a: 0}
   isRevealed: 0
   revealProgress: 0
---- !u!1 &1875609534
-GameObject:
+--- !u!114 &1752946020
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1875609535}
-  m_Layer: 0
-  m_Name: errorRemove
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1875609535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875609534}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.22013, y: 1.92037, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1752946018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b096d815c696c48b9e84ce9ba0e40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SecondActivatedObject
+  activatedByTag: Activator
+  secondActivatedObject: {fileID: 1625317521}
 --- !u!1001 &1978557168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5476,6 +5462,5 @@ SceneRoots:
   - {fileID: 2124598400}
   - {fileID: 600560339}
   - {fileID: 1118862382}
-  - {fileID: 1875609535}
   - {fileID: 996356724}
   - {fileID: 1362640520}

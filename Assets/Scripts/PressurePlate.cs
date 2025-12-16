@@ -10,7 +10,6 @@ public class PressurePlate : MonoBehaviour
     public Sprite activatedSprite;
 
     public GameObject activatedObject;
-    public GameObject secondActivatedObject;
 
     public AudioSource pressurePlateSound;
 

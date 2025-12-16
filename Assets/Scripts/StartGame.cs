@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class NextLevel : MonoBehaviour
+public class StartGame : MonoBehaviour
 {
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void BeginGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Debug.Log("Next Level Triggered");
